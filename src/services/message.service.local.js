@@ -4,7 +4,7 @@ import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'msg'
 
-export const messsageService = {
+export const messageService = {
     query,
     getById,
     save,
@@ -12,7 +12,7 @@ export const messsageService = {
     getEmptyMessage,
     getDefaultFilter
 }
-window.cs = messsageService
+window.cs = messageService
 
 _createMsgs()
 
@@ -61,7 +61,7 @@ function _createMsgs() {
     }
 }
 
-export function getDefaultFilter() {
+function getDefaultFilter() {
     return { txt:'', email:''}
 }
 
