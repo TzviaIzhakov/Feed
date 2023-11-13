@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { messageService } from './services/message.service.local'
+import { messageService } from './services/message.service'
+import md5 from 'md5'
+
 import demoUser from './assets/img/demo-user.png'
 
 export function RootCmp() {
   const [msg, setMsg] = useState(messageService.getEmptyMessage())
   const [msgs, setMsgs] = useState([])
-  const [filteBy, setFilterBy] = useState(messageService.getDefaultFilter)
+  const [filteBy, setFilterBy] = useState(messageService.getDefaultFilter())
 
   useEffect(() => {
     updateMessages(filteBy)
@@ -37,6 +39,13 @@ export function RootCmp() {
     setMsgs(prevMsgs => [...prevMsgs, saveMsg])
   }
 
+  function getImgUrl(email){
+    const emailHash = md5(email.toLowerCase());
+    const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}`;
+    return gravatarUrl;
+  }
+
+  
   if (!msgs.length) return
 
   return (
@@ -55,9 +64,10 @@ export function RootCmp() {
             {msgs?.map((msg, idx) =>
               <article key={idx}>
                 <div className="mini-user flex">
-                  <img src={demoUser} alt="demo-user" />
+                  <img src={getImgUrl(msg.email)} alt="demo-user" />
                   <div className="mini-user-details flex">
                   <span className="email-user">{msg.email}</span>
+                  {console.log(msg.email, "email")}
                   <span className='msg-user'>{msg.txt}</span>
                   </div>
                 </div>
