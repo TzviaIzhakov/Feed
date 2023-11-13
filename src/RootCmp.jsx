@@ -1,10 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { messsageService } from './services/message.service.local'
 
 
 export function RootCmp() {
     const [msg, setMsg] = useState({ txt: '' ,email: ''})
     const [msgs, setMsgs] = useState([])
 
+    useEffect(()=>{
+        updateMessages()
+    },[])
+
+    const updateMessages = async ()=>{
+        setMsgs( await messsageService.query({}))
+    }
     const handleChange = ev => {
         const { name, value } = ev.target
         setMsg(prevMsg => ({ ...prevMsg, [name]: value }))
@@ -17,9 +25,13 @@ export function RootCmp() {
         addMsg(newMsg)
     }
 
-    function addMsg(newMsg) {
-        setMsgs(prevMsgs => [...prevMsgs, newMsg])
+    async function addMsg(newMsg) {
+        const savegMsg = await messsageService.save(newMsg)
+        setMsgs(prevMsgs => [...prevMsgs, savegMsg])
     }
+
+    if(!msgs.length) return
+
     return (
             <main>
              
