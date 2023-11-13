@@ -18,7 +18,7 @@
                 width: 100%;
                 resize: none;
                 border: 1px solid rgba(128, 128, 128, 0.641);
-                
+
                 &::placeholder {
                     padding: rem(8px);
                     font-family: Arial, Helvetica, sans-serif;
@@ -28,6 +28,7 @@
             .submit-btn-area {
                 width: 100%;
                 justify-content: end;
+
                 button {
                     width: rem(76px);
                     border-radius: rem(4px);
@@ -57,26 +58,35 @@
             .msg-preview {
                 padding-block: rem(12px);
 
-                & > * {
+                &>* {
                     padding-block: rem(4px);
                 }
 
                 .mini-user {
-                    flex-direction: column;
-                    .email-user {
-                        color: $clr7;
-                        font-weight: 600;
-                        font-family:Arial, Helvetica, sans-serif;
-                        letter-spacing: -1px;
-                        font-size: rem(15px);
+                    img {
+                        width: rem(52px);
+                        border-radius: rem(12px);
+                        margin-inline-end: rem(6px);
+                    }
+                    .mini-user-details {
+                        flex-direction: column;
+
+                        .email-user {
+                            color: $clr7;
+                            font-weight: 600;
+                            font-family: Arial, Helvetica, sans-serif;
+                            letter-spacing: -1px;
+                            font-size: rem(15px);
+                        }
+
+                        .msg-user {
+                            color: $clr8;
+                            font-family: Arial, Helvetica, sans-serif;
+                            font-weight: 300;
+                            font-size: rem(16px);
+                        }
                     }
 
-                    .msg-user {
-                        color: $clr8;
-                        font-family:Arial, Helvetica, sans-serif;
-                        font-weight: 300;
-                        font-size: rem(16px);
-                    }
                 }
             }
         }

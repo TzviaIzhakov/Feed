@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { messageService } from './services/message.service'
 import md5 from 'md5'
 
+import demoUser from './assets/img/demo-user.png'
 
 export function RootCmp() {
   const [msg, setMsg] = useState(messageService.getEmptyMessage())
@@ -63,8 +64,11 @@ export function RootCmp() {
             {msgs?.map((msg, idx) =>
               <article key={idx}>
                 <div className="mini-user flex">
-                <span className="email-user">{msg.email}</span>
-                <span className='msg-user'>{msg.txt}</span>
+                  <img src={demoUser} alt="demo-user" />
+                  <div className="mini-user-details flex">
+                  <span className="email-user">{msg.email}</span>
+                  <span className='msg-user'>{msg.txt}</span>
+                  </div>
                 </div>
               </article>)}
           </section>
