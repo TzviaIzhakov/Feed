@@ -39,10 +39,10 @@ export function RootCmp() {
     setMsgs(prevMsgs => [...prevMsgs, saveMsg])
   }
 
-  function cheackGravatr(){
-    const emailHash = md5('tzvia.izhakov@gmail.com'.toLowerCase());
+  function getImgUrl(email){
+    const emailHash = md5(email.toLowerCase());
     const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}`;
-    console.log(gravatarUrl);
+    return gravatarUrl;
   }
 
   
@@ -64,9 +64,10 @@ export function RootCmp() {
             {msgs?.map((msg, idx) =>
               <article key={idx}>
                 <div className="mini-user flex">
-                  <img src={demoUser} alt="demo-user" />
+                  <img src={getImgUrl(msg.email)} alt="demo-user" />
                   <div className="mini-user-details flex">
                   <span className="email-user">{msg.email}</span>
+                  {console.log(msg.email, "email")}
                   <span className='msg-user'>{msg.txt}</span>
                   </div>
                 </div>
