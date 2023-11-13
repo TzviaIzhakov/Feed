@@ -43,17 +43,24 @@ export function RootCmp() {
     <main className='home'>
       <div className="msg-display">
         <form onSubmit={sendMsg} className='msg-form'>
-          <input required type="email" onChange={handleChange} placeholder='Email' name='email' className='email-input'/>
+          <input required type="email" onChange={handleChange} placeholder='Email' name='email' className='email-input' />
           <textarea required name="txt" cols="30" rows="4" placeholder='Message' onChange={handleChange} className='msg-input' ></textarea>
-          <button>Submit</button>
+          <div className="submit-btn-area flex">
+            <button>Submit</button>
+          </div>
         </form>
-        <input type="text" onChange={handleChangeForFilter} placeholder='Filter' />
-        <section>
-          {msgs?.map((msg, idx) => <article key={idx}>
-            {msg.txt}
-            {msg.email}
-          </article>)}
-        </section>
+        <div className="msg-list">
+          <input type="text" onChange={handleChangeForFilter} placeholder='Filter' className='filter-input' />
+          <section className='msg-preview'>
+            {msgs?.map((msg, idx) =>
+              <article key={idx}>
+                <div className="mini-user flex">
+                <span className="email-user">{msg.email}</span>
+                <span className='msg-user'>{msg.txt}</span>
+                </div>
+              </article>)}
+          </section>
+        </div>
       </div>
 
     </main>

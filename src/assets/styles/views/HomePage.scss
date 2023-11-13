@@ -2,8 +2,8 @@
     .msg-display {
         margin: auto;
         background-color: $clr6;
-        width: fit-content ;
-        
+        width: rem(350px);
+
         .msg-form {
             padding: rem(15px);
             background-color: $clr5;
@@ -11,13 +11,73 @@
             .email-input {
                 width: 100%;
                 padding: rem(8px);
+                border: 1px solid rgba(128, 128, 128, 0.641);
             }
 
             .msg-input {
                 width: 100%;
                 resize: none;
-
+                border: 1px solid rgba(128, 128, 128, 0.641);
                 
+                &::placeholder {
+                    padding: rem(8px);
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+            }
+
+            .submit-btn-area {
+                width: 100%;
+                justify-content: end;
+                button {
+                    width: rem(76px);
+                    border-radius: rem(4px);
+                    padding: rem(8px) rem(12px);
+                    text-transform: uppercase;
+                    font-size: rem(12px);
+                    font-weight: 600;
+                    background-color: $clr3;
+
+                    &:hover {
+                        background-color: $hover-clr
+                    }
+                }
+            }
+
+        }
+
+        .msg-list {
+            padding: rem(15px);
+
+            .filter-input {
+                width: 100%;
+                padding: rem(8px);
+                border: 1px solid rgba(128, 128, 128, 0.641);
+            }
+
+            .msg-preview {
+                padding-block: rem(12px);
+
+                & > * {
+                    padding-block: rem(4px);
+                }
+
+                .mini-user {
+                    flex-direction: column;
+                    .email-user {
+                        color: $clr7;
+                        font-weight: 600;
+                        font-family:Arial, Helvetica, sans-serif;
+                        letter-spacing: -1px;
+                        font-size: rem(15px);
+                    }
+
+                    .msg-user {
+                        color: $clr8;
+                        font-family:Arial, Helvetica, sans-serif;
+                        font-weight: 300;
+                        font-size: rem(16px);
+                    }
+                }
             }
         }
     }
