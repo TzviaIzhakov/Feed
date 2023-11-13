@@ -10,6 +10,7 @@ export const messsageService = {
     save,
     remove,
     getEmptyMessage,
+    getDefaultFilter
 }
 window.cs = messsageService
 
@@ -60,6 +61,9 @@ function _createMsgs() {
     }
 }
 
+export function getDefaultFilter() {
+    return { txt:'', email:''}
+}
 
 
 
