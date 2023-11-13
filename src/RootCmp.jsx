@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { messageService } from './services/message.service.local'
+import { messageService } from './services/message.service'
+import md5 from 'md5'
 
 
 export function RootCmp() {
   const [msg, setMsg] = useState(messageService.getEmptyMessage())
   const [msgs, setMsgs] = useState([])
-  const [filteBy, setFilterBy] = useState(messageService.getDefaultFilter)
+  const [filteBy, setFilterBy] = useState(messageService.getDefaultFilter())
 
   useEffect(() => {
     updateMessages(filteBy)
@@ -37,6 +38,13 @@ export function RootCmp() {
     setMsgs(prevMsgs => [...prevMsgs, saveMsg])
   }
 
+  function cheackGravatr(){
+    const emailHash = md5('tzvia.izhakov@gmail.com'.toLowerCase());
+    const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}`;
+    console.log(gravatarUrl);
+  }
+
+  
   if (!msgs.length) return
 
   return (
